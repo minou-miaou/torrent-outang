@@ -11,7 +11,7 @@ public class Tools {
 
 	public List <File> toList(File dossier){
 		List<File> liste = new ArrayList<File>(FileUtils.listFiles(dossier, TrueFileFilter.TRUE, TrueFileFilter.TRUE));
-		//FileFilter ff=new FileFilter();
+		
 		
 		String[]tableau=dossier.list();
 		

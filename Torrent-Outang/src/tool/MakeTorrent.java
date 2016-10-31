@@ -40,7 +40,7 @@ public class MakeTorrent {
 		}
 		t.start();
 
-		// Torrent tor = null;
+		
 
 		try {
 			List<File> liste = tools.toList(dossier);
