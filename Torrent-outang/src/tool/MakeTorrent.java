@@ -8,6 +8,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.turn.ttorrent.client.Client;
@@ -44,8 +45,15 @@ public class MakeTorrent {
 
 		try {
 			List<File> liste = tools.toList(dossier);
+			ArrayList<File> liste_filtered = new ArrayList<File>();
+			// filter files
+			for (int i=0;i<liste.size();i++){
+				if(liste.get(i).isFile()){
+					liste_filtered.add(liste.get(i));
+				}
+			}
 			URL url = t.getAnnounceUrl();
-			Torrent tor = Torrent.create(dossier, liste, url.toURI(), "Aymeric");
+			Torrent tor = Torrent.create(dossier, liste_filtered, url.toURI(), "Aymeric");
 			tor.save(new FileOutputStream(parent + dossier.getName() + ".torrent"));
 			TrackedTorrent tt = new TrackedTorrent(tor);
 			t.announce(tt);
