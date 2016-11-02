@@ -47,8 +47,8 @@ public class MakeTorrent {
 			List<File> liste = tools.toList(dossier);
 			ArrayList<File> liste_filtered = new ArrayList<File>();
 			// filter files
-			for (int i=0;i<liste.size();i++){
-				if(liste.get(i).isFile()){
+			for (int i = 0; i < liste.size(); i++) {
+				if (liste.get(i).isFile()) {
 					liste_filtered.add(liste.get(i));
 				}
 			}
@@ -61,7 +61,7 @@ public class MakeTorrent {
 
 			Runtime.getRuntime().addShutdownHook(new Thread(new Client.ClientShutdown(seeder, null)));
 			seeder.share(seedtime);
-			Thread.sleep((long) (seedtime+5) * 1000);
+			Thread.sleep((long) (seedtime + 5) * 1000);
 			t.stop();
 			System.exit(0);
 		} catch (NoSuchAlgorithmException | InterruptedException | IOException | URISyntaxException e) {

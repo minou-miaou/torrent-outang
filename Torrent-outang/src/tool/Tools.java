@@ -9,9 +9,9 @@ import org.apache.commons.io.filefilter.TrueFileFilter;
 
 public class Tools {
 
-	public List <File> toList(File dossier){
-		List<File> liste = new ArrayList<File>(FileUtils.listFiles(dossier, TrueFileFilter.TRUE, TrueFileFilter.TRUE ));
-		
+	public List<File> toList(File dossier) {
+		List<File> liste = new ArrayList<File>(FileUtils.listFiles(dossier, TrueFileFilter.TRUE, TrueFileFilter.TRUE));
+
 		return liste;
 	}
 }

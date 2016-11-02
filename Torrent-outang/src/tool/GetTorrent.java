@@ -20,7 +20,7 @@ public class GetTorrent {
 			client.share(1800);
 			Thread.sleep((long) (1800 + 10) * 1000);
 			client.stop();
-			
+
 			System.exit(0);
 		} catch (NoSuchAlgorithmException | IOException e) {
 			// TODO Auto-generated catch block
@@ -29,7 +29,7 @@ public class GetTorrent {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
 
 }
