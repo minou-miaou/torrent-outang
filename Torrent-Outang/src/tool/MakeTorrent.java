@@ -22,6 +22,10 @@ public class MakeTorrent {
 
 	Tools tools = new Tools();
 
+	/**
+	 * @param dossier
+	 * Folder to convert in .torrent
+	 */
 	public MakeTorrent(File dossier) {
 
 		File parent = dossier.getParentFile();
@@ -40,7 +44,7 @@ public class MakeTorrent {
 		}
 		t.start();
 
-		
+		// Torrent tor = null;
 
 		try {
 			List<File> liste = tools.toList(dossier);
@@ -53,7 +57,7 @@ public class MakeTorrent {
 
 			Runtime.getRuntime().addShutdownHook(new Thread(new Client.ClientShutdown(seeder, null)));
 			seeder.share(seedtime);
-			Thread.sleep((long) (seedtime+5) * 1000);
+			Thread.sleep((long) (seedtime + 5) * 1000);
 			t.stop();
 			System.exit(0);
 		} catch (NoSuchAlgorithmException | InterruptedException | IOException | URISyntaxException e) {
