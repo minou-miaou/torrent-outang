@@ -8,7 +8,11 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.TrueFileFilter;
 
 import com.turn.ttorrent.client.Client;
 import com.turn.ttorrent.client.SharedTorrent;
@@ -20,7 +24,6 @@ public class MakeTorrent {
 
 	public static int seedtime = 1800;
 
-	Tools tools = new Tools();
 
 	/**
 	 * @param dossier
@@ -47,7 +50,7 @@ public class MakeTorrent {
 		// Torrent tor = null;
 
 		try {
-			List<File> liste = tools.toList(dossier);
+			List<File> liste = new ArrayList<File>(FileUtils.listFiles(dossier, TrueFileFilter.TRUE, TrueFileFilter.TRUE));
 			URL url = t.getAnnounceUrl();
 			Torrent tor = Torrent.create(dossier, liste, url.toURI(), "Aymeric");
 			tor.save(new FileOutputStream(parent + dossier.getName() + ".torrent"));
